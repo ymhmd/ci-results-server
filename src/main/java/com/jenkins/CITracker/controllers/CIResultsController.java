@@ -31,7 +31,7 @@ public class CIResultsController {
         if (ciResultToAdd.getStatus() == null) {
             ciResult.setStatus("PASS");
         } else {
-            ciResult.setStatus("FAIL");
+            ciResult.setStatus(ciResultToAdd.getStatus());
         }
         ciResultRepository.save(ciResult);
 
