@@ -28,6 +28,11 @@ public class CIResultsController {
         CIResult ciResult = new CIResult();
         ciResult.setType(ciResultToAdd.getType());
         ciResult.setDetails(ciResultToAdd.getDetails());
+        if (ciResultToAdd.getStatus() == null) {
+            ciResult.setStatus("PASS");
+        } else {
+            ciResult.setStatus("FAIL");
+        }
         ciResultRepository.save(ciResult);
 
         return ciResult;

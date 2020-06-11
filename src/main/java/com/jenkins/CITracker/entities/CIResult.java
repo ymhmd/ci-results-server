@@ -15,6 +15,9 @@ public class CIResult implements Serializable {
     @Column(name = "type")
     private String type;
 
+    @Column(name = "status")
+    private String status;
+
     @Column(name = "details")
     private String details;
 
@@ -28,6 +31,14 @@ public class CIResult implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 
     public String getType() {
