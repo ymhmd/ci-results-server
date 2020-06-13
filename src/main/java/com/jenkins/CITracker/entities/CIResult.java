@@ -1,7 +1,5 @@
-package com.jenkins.CITracker.entities;
+package com.jenkins.CITracker.entities;clear
 
-import jdk.jfr.Timestamp;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.io.Serializable;
