@@ -1,7 +1,11 @@
 package com.jenkins.CITracker.entities;
 
+import jdk.jfr.Timestamp;
+import org.springframework.data.annotation.CreatedDate;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 
 @Entity
@@ -21,6 +25,15 @@ public class CIResult implements Serializable {
     @Column(name = "details")
     private String details;
 
+    @Temporal(TemporalType.TIMESTAMP)
+    @Column(name = "created_at")
+    private Date date;
+
+    @PrePersist
+    protected void onCreate() {
+        date = new Date();
+    }
+
     public CIResult () {
 
     }
@@ -31,6 +44,14 @@ public class CIResult implements Serializable {
 
     public void setId(long id) {
         this.id = id;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public String getStatus() {

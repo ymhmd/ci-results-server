@@ -6,10 +6,7 @@ import com.jenkins.CITracker.helpers.PushNotificationHelpers;
 import com.jenkins.CITracker.repositories.CIResultRepository;
 import com.jenkins.CITracker.services.AndroidPushNotificationsService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -24,7 +21,7 @@ public class CIResultsController {
 
     @RequestMapping("/ci_results")
     public List<CIResult> getAllResults() {
-        return ciResultRepository.findAll();
+        return ciResultRepository.findAllByOrderByDateDesc();
     }
 
     @PostMapping(value = "/ci_results", consumes = "application/json", produces = "application/json")
@@ -48,6 +45,11 @@ public class CIResultsController {
         pushNotificationHelpers.pushNotificationToAndroid(notificationTitle, notificationBody);
 
         return ciResult;
+    }
+
+    @DeleteMapping("/ci_results")
+    public void deleteAll() {
+        ciResultRepository.deleteAll();
     }
 
 }

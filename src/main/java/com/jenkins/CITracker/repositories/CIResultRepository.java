@@ -10,5 +10,6 @@ import java.util.List;
 @Repository
 public interface CIResultRepository extends JpaRepository<CIResult, Long> {
     List<CIResult> findByType(String type);
+    List<CIResult> findAllByOrderByDateDesc();
     List<CIResult> findAll();
 }
