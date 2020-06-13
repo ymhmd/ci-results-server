@@ -1,5 +1,4 @@
-package com.jenkins.CITracker.entities;clear
-
+package com.jenkins.CITracker.entities;
 
 import javax.persistence.*;
 import java.io.Serializable;
